@@ -20,3 +20,11 @@
 .App-link {
   color: #09d3ac;
 }
+
+.pagination {
+  clear:both;
+  position:relative;
+  font-size:11px;
+  text-align:center;
+}
+

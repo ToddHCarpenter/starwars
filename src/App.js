@@ -12,8 +12,8 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path="/" component={Characters} />
-          <Route path="/films" component={Films} />
+          <Route exact path="/" component={Films} />
+          <Route path="/characters" component={Characters} />
         </Switch>
       </div>
     </BrowserRouter>
