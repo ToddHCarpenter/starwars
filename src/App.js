@@ -4,6 +4,7 @@ import "./App.css";
 import Characters from "./components/Characters";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./Header";
+import Films from "./components/Films";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Characters} />
-          {/* <Route path="/films" component={films} /> */}
+          <Route path="/films" component={Films} />
         </Switch>
       </div>
     </BrowserRouter>

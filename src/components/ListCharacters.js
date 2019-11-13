@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 //bootstrap
 import Card from "react-bootstrap/Card";
@@ -7,17 +6,6 @@ import CardColumns from "react-bootstrap/CardColumns";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Characters = props => {
-  const [setFilms, getFilms] = useState([]);
-
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const res = await axios(props.getCharacter.films);
-  //       getFilms(res.data.results);
-  //     };
-
-  //     fetchData();
-  //   }, []);
-
   return (
     <CardColumns>
       {props.getCharacter.map(character => (
