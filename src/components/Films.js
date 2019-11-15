@@ -7,13 +7,13 @@ const Films = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios("https://swapi.co/api/films");
+      const res = await axios("https://swapi.co/api/films/");
       setFilms(res.data.results);
     };
 
     fetchData();
   }, []);
-
+  console.log(getFilms)
   return <ListFilms getFilms={getFilms} />;
 };
 

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Accord from './Accord';
 
 //bootstrap
 import Card from "react-bootstrap/Card";
@@ -8,9 +10,8 @@ import Accordion from 'react-bootstrap/Accordion'
 import Button from 'react-bootstrap/Button'
 
 const Characters = props => {
-
-
   
+  const [getFilm, setFilm] = useState([]);
     const style = {
       margin: "20px"
     };
@@ -18,11 +19,6 @@ const Characters = props => {
     const cardStyle = {
       borderRadius: '2%'
     }
-
-    const linkStyle = {
-      color: '#fff'
-    }
-
 
   return (
     <CardColumns style={style}>
@@ -33,18 +29,9 @@ const Characters = props => {
           <Card.Body>
             <Card.Text>Height: {character.height}</Card.Text>
             <Card.Text>Gender: {character.gender}</Card.Text>
+           
           </Card.Body>
-          <Card.Footer>
-            <Accordion.Toggle as={Button} variant="link" style={linkStyle} eventKey='0' >More Info</Accordion.Toggle>  
-          </Card.Footer>
-           <Accordion.Collapse eventKey="0">
-             <Card.Body>
-            <Card.Text>Birth Year: {character.birth_year}</Card.Text>
-            <Card.Text>Eye Color: {character.height}</Card.Text>
-            <Card.Text>Hair Color: {character.hair_color}</Card.Text>
-            <Card.Text>Skin Color: {character.skin_color}</Card.Text>
-            </Card.Body>
-           </Accordion.Collapse>
+            <Accord character={character}/>
         </Card>
         </Accordion>
       ))}
