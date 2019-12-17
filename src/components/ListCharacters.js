@@ -1,42 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import Accord from './Accord';
 
 //bootstrap
 import Card from "react-bootstrap/Card";
-import CardColumns from "react-bootstrap/CardColumns";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Accordion from 'react-bootstrap/Accordion'
-import Button from 'react-bootstrap/Button'
+
 
 const Characters = props => {
-  
-  const [getFilm, setFilm] = useState([]);
-    const style = {
-      margin: "20px"
-    };
 
-    const cardStyle = {
-      borderRadius: '2%'
-    }
+  const style = {
+    margin: "10px",
+    borderRadius: '2%',
+    width: '18rem',
+    flexGrow: '1'
+  };
+
+
+  const save = (character) => {
+    axios({
+      method: 'post',
+      url: '/add',
+      data: {
+        name: character.name,
+        height: character.height,
+        gender: character.gender,
+        birth: character.birth_year,
+        mass: character.mass
+      }
+    });
+  }
 
   return (
-    <CardColumns style={style}>
+    <div style={{ flexDirection: 'row', display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'end' }}>
       {props.getCharacter.map(character => (
-        <Accordion  bg="dark" >
-        <Card  className="text-left" bg="secondary" text="white" key={character.name} border="dark" style={cardStyle}>
-          <Card.Header>Name: {character.name}</Card.Header>
-          <Card.Body>
-            <Card.Text>Height: {character.height}</Card.Text>
-            <Card.Text>Gender: {character.gender}</Card.Text>
-           
-          </Card.Body>
-            <Accord character={character}/>
-        </Card>
+        <Accordion >
+          <Card style={style} className='text-left text-secondary' border="dark">
+            {console.log(character.id)}
+            <Card.Header key={character.name}>{character.name}</Card.Header>
+
+            <Card.Body>
+              <Card.Text >Height: {character.height} inches</Card.Text>
+              <Card.Text >Gender: {character.gender}</Card.Text>
+
+            </Card.Body>
+            <Accord character={character} save={save} />
+          </Card>
         </Accordion>
       ))}
-    </CardColumns>
+    </div>
   );
 };
-
 export default Characters;
